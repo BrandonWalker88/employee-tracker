@@ -199,9 +199,9 @@ function addDepartment() {
         type: "input",
         name: "nameDpto",
         message: "What is your department name?",
-        validate: (name) => {
+        validate: (department_name) => {
           //validation the entry
-          if (name) {
+          if (department_name) {
             return true;
           } else {
             console.log("\n Please enter a department name!");
@@ -214,7 +214,7 @@ function addDepartment() {
       let nameDepartment = anserw.nameDpto;
       //sql consult insert
       connection.query(
-        "INSERT INTO department SET name=? ",
+        "INSERT INTO departments SET name=? ",
         [nameDepartment],
         (err, res) => {
           if (err) throw err;
@@ -246,7 +246,7 @@ async function deleteApartment() {
       let deleteId = anserw.dptoDelete;
       //sql consult delete
       connection.query(
-        "DELETE FROM department WHERE id=? ",
+        "DELETE FROM departments WHERE id=? ",
         [deleteId],
         (err, res) => {
           if (err) throw err;
@@ -413,7 +413,7 @@ async function addEmployee() {
 
       //sql consult insert  a employee
       connection.query(
-        "INSERT INTO employees SET first_name=?,last_name=?,roles_id=?,manager_id=? ",
+        "INSERT INTO employees SET first_name=?,last_name=?,role_id=?,manager_id=? ",
         [name, last, roleIdEmp, managerId],
         (err, res) => {
           if (err) throw err;
